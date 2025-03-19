@@ -1,0 +1,31 @@
+plugins {
+    id 'java'   // 선택한 언어
+    id 'org.springframework.boot' version '3.4.3'   // Spring Boot 버전
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example.hello' // 그룹명
+version = '0.0.1-SNAPSHOT'  // 버전
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(18)
+    }
+}
+
+// 라이브러리 저장소 (필요시 특정 URL 추가 될 수 있음)
+repositories {
+    mavenCentral()
+}
+
+// 라이브러리들
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
